@@ -1,0 +1,185 @@
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* CONTENEDOR PRINCIPAL - mobile-first */
+#container{
+  width:100vw;
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:
+    auto   /* header */
+    auto   /* nav */
+    auto   /* aside */
+    auto   /* main */
+    auto   /* extras */
+    auto;  /* footer */
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "aside"
+    "main"
+    "extras"
+    "footer";
+}
+
+/* HEADER */
+header{
+  grid-area: header;
+  background: #2f8a3a;    /* verde */
+  height:80px;
+  display:flex;           
+  justify-content:center;
+  align-items:center;
+}
+#cajita{
+  width:20px;
+  height:20px;
+  background: yellow;     
+  border: 2px solid red;  
+}
+
+/* NAV */
+nav{
+  grid-area: nav;
+  background: #d52525;    /* rojo */
+  height:40px;
+}
+
+/* MAIN (área azul) */
+main{
+  grid-area: main;
+  background: #4da0ff;   
+  padding: 12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.area-azul {
+  width: 100%;
+  display:flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+}
+.caja-verde{
+  background: darkgreen;
+  border: 6px solid yellow;
+  width: 80%;
+  height: 100px;
+}
+
+/* ASIDE (panel amarillo con 3 cajas) */
+aside{
+  grid-area: aside;
+  padding:12px;
+}
+.panel-amarillo{
+  background: gold; 
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:8px;
+  gap:10px;
+}
+.lado-caja{
+  background: #aaa;     
+  width: 80%;
+  height: 80px;
+  border: 6px solid darkgreen;
+}
+.lado-caja.azul-peq{ background: #4da0ff; } 
+
+/* EXTRAS */
+#extras{
+  grid-area: extras;
+  padding: 12px;
+  display:flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 12px;
+}
+.cuadro-peq{
+  background: yellow;
+  border: 8px solid darkgreen;
+  width: 80%;
+  height: 80px;
+}
+
+/* FOOTER */
+footer{
+  grid-area: footer;
+  background: violet;
+  height:60px;
+  margin-top: 8px;
+}
+
+/* --- ESCRITORIO: 769px en adelante --- */
+@media (min-width: 769px) {
+  #container{
+    grid-template-rows:
+      auto   /* header */
+      auto   /* nav */
+      1fr    /* main+aside */
+      auto   /* extras */
+      auto;  /* footer */
+    grid-template-columns: 3fr 1fr; 
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main aside"
+      "extras extras"
+      "footer footer";
+    height:100vh;
+  }
+
+  /* main (izq) */
+  main{
+    padding: 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .area-azul{
+    width: 100%;
+    max-width: 520px;
+    flex-direction: column; 
+    justify-content:center;
+    gap: 30px;
+  }
+  .caja-verde{
+    width: 70%;
+    height: 120px;
+  }
+
+  /* aside (der) */
+  aside{
+    padding: 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .panel-amarillo{
+    width: 100%;
+    max-width: 220px;
+    gap:18px;
+    padding: 14px;
+  }
+  .lado-caja{
+    width: 100%;
+    height: 110px;
+  }
+
+  /* extras en fila */
+  #extras{
+    flex-direction: row;
+    justify-content:center;
+    gap: 20px;
+    padding: 20px;
+  }
+  .cuadro-peq{
+    width: 180px;
+    height: 100px;
+  }
+}

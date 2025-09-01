@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+
+  /* Cambio: ahora es mobile-first
+     → estructura en columna (header, nav, main, aside, footer) */
+  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "aside"
+    "footer";
+}
+
+/* HEADER */
+header {
+  grid-area: header;
+  background: green;
+  height: 80px;
+
+  /* Cambio: centramos la cajita usando flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cajita amarilla de 20x20 con borde rojo */
+#cajita {
+  width: 20px;
+  height: 20px;
+  background: yellow;
+  border: 2px solid red;
+}
+
+/* NAV */
+nav {
+  grid-area: nav;
+  background: red;
+  height: 40px;
+}
+
+/* MAIN */
+main {
+  grid-area: main;
+  background: gold;
+
+  /* Cambio: organizamos los cuadros verdes con flexbox */
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;     
+}
+
+.cuadro-verde {
+  background: darkgreen;
+  border: 2px solid yellow;
+
+  /* Cambio: flexbox para los cuadros grises */
+  display: flex;
+  flex-direction: column; 
+  width: 90%;
+  margin: 10px;
+  padding: 10px;
+}
+
+.cuadro-gris {
+  background: grey;
+  border: 2px solid black;
+  height: 80px;
+
+  /* Cambio: ya no usamos width fijo repetido en id,
+     sino width 100% en mobile */
+  width: 100%; 
+  margin: 5px 0;
+}
+
+/* ASIDE */
+aside {
+  grid-area: aside;
+  background: blue;
+  min-height: 100px; /* Cambio: ahora aside siempre visible */
+}
+
+/* FOOTER */
+footer {
+  grid-area: footer;
+  background: violet;
+  height: 60px;
+}
+
+/* MEDIA QUERY para escritorio */
+@media (min-width: 769px) {
+  #container {
+    /* Cambio: reorganizamos en grid de 2 columnas */
+    grid-template-rows: auto auto 1fr auto; 
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "aside main"
+      "footer footer";
+  }
+
+  aside {
+    height: auto; 
+  }
+
+  main {
+    /* Cambio: en escritorio los verdes siguen centrados */
+    justify-content: center; 
+    align-items: center;    
+  }
+
+  .cuadro-verde {
+    /* Cambio: en escritorio los grises dentro del verde van en fila */
+    flex-direction: row; 
+  }
+
+  .cuadro-gris {
+    width: 50%;  /* Cambio: en escritorio cada gris ocupa la mitad */
+    height: 120px;
+    margin: 5px;
+  }
+}
